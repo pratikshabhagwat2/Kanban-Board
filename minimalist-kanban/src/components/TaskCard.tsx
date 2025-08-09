@@ -1,21 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  IconButton,
-  Chip,
-  Menu,
-  MenuItem,
-  List,
-  ListItem,
-  ListItemText,
-  Checkbox
+  Box, Card, CardContent, Typography, IconButton, 
+  Chip, Menu, MenuItem, List, ListItem, ListItemText, Checkbox
 } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { MoreVert as MoreVertIcon, Edit as EditIcon, Delete as DeleteIcon } from "@mui/icons-material";
 import { Draggable, DraggableProvided, DraggableStateSnapshot } from "react-beautiful-dnd";
 import { Task } from "../types";
 import { formatDueDate, dueChipColor } from "../utils/dateUtils";
@@ -31,7 +19,7 @@ type Props = {
   onToggleComplete?: (completed: boolean) => void;
 };
 
-export default function TaskCard({ task, index, onEdit, onDelete, onToggleSubtask, onToggleComplete }: Props) {
+const TaskCard = memo(({ task, index, onEdit, onDelete, onToggleSubtask, onToggleComplete }: Props) => {
   const [anchor, setAnchor] = useState<null | HTMLElement>(null);
   const openMenu = (e: React.MouseEvent<HTMLElement>) => setAnchor(e.currentTarget);
   const closeMenu = () => setAnchor(null);
@@ -62,18 +50,15 @@ export default function TaskCard({ task, index, onEdit, onDelete, onToggleSubtas
                 borderLeft: '4px solid',
                 borderLeftColor: task.dueDate ? dueChipColor(task.dueDate) + '.main' : 'primary.main',
                 background: snapshot.isDragging ? 'rgba(25, 118, 210, 0.04)' : 'inherit',
+                transition: 'all 0.2s ease',
+                transform: snapshot.isDragging ? 'scale(1.03)' : 'scale(1)',
                 '&:hover': {
                   boxShadow: 3,
                   transform: 'translateY(-3px)',
-                  transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease, background-color 0.2s ease',
-                  backgroundColor: (theme) => 
-                    theme.palette.mode === 'dark' 
-                      ? 'rgba(255, 255, 255, 0.08)' 
-                      : 'rgba(25, 118, 210, 0.08)'
-                },
-                // Improve drag visual feedback
-                transition: 'transform 0.2s, box-shadow 0.2s, opacity 0.2s',
-                transform: snapshot.isDragging ? 'scale(1.03)' : 'scale(1)',
+                  backgroundColor: theme => theme.palette.mode === 'dark' 
+                    ? 'rgba(255, 255, 255, 0.08)' 
+                    : 'rgba(25, 118, 210, 0.08)'
+                }
               }}
             >
               <CardContent>
@@ -217,4 +202,6 @@ export default function TaskCard({ task, index, onEdit, onDelete, onToggleSubtas
       )}
     </Draggable>
   );
-}
+});
+
+export default TaskCard;

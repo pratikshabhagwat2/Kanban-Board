@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, memo } from "react";
 import { Box, Button } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import { Add as AddIcon } from "@mui/icons-material";
 import { DroppableProvided, DroppableStateSnapshot } from "react-beautiful-dnd";
 import ColumnHeader from "./ColumnHeader.js";
 import TaskCard from "./TaskCard.js";
@@ -18,7 +18,7 @@ type Props = {
   onToggleComplete: (taskId: string, completed: boolean) => void;
 };
 
-export default function Column({ column, tasks, onAdd, onEdit, onDelete, onToggleSubtask, onToggleComplete }: Props) {
+const Column = memo(({ column, tasks, onAdd, onEdit, onDelete, onToggleSubtask, onToggleComplete }: Props) => {
   const [wasDroppedOn, setWasDroppedOn] = useState(false);
   const columnRef = useRef<HTMLDivElement | null>(null);
   
@@ -107,23 +107,16 @@ export default function Column({ column, tasks, onAdd, onEdit, onDelete, onToggl
           sx={{ 
             borderStyle: 'dashed',
             transition: 'all 0.3s ease',
+            animation: 'pulse 2s infinite',
             '&:hover': {
               borderStyle: 'solid',
               transform: 'translateY(-2px)',
               boxShadow: 2
             },
-            // Subtle pulse animation to draw attention
-            animation: 'pulse 2s infinite',
             '@keyframes pulse': {
-              '0%': {
-                boxShadow: '0 0 0 0 rgba(25, 118, 210, 0.2)',
-              },
-              '70%': {
-                boxShadow: '0 0 0 6px rgba(25, 118, 210, 0)',
-              },
-              '100%': {
-                boxShadow: '0 0 0 0 rgba(25, 118, 210, 0)',
-              }
+              '0%': { boxShadow: '0 0 0 0 rgba(25, 118, 210, 0.2)' },
+              '70%': { boxShadow: '0 0 0 6px rgba(25, 118, 210, 0)' },
+              '100%': { boxShadow: '0 0 0 0 rgba(25, 118, 210, 0)' }
             }
           }}
         >
@@ -132,4 +125,6 @@ export default function Column({ column, tasks, onAdd, onEdit, onDelete, onToggl
       </Box>
     </Box>
   );
-}
+});
+
+export default Column;
