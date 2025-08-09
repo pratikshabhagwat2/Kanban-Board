@@ -14,9 +14,16 @@ A modern, minimalist Kanban board application built with React, TypeScript, and 
 
 - **Intuitive Drag and Drop**: Effortlessly move tasks between columns using React Beautiful DnD
 - **Task Management**: Create, edit, and delete tasks with a simple interface
+- **Task Count Display**: Column headers show the number of tasks in each column
 - **Subtasks**: Break down complex tasks into smaller, manageable subtasks
 - **Priority Levels**: Assign priority to tasks with color-coded indicators
+  - **Green**: Low priority tasks
+  - **Orange**: Medium priority tasks
+  - **Red**: High priority tasks
 - **Due Dates**: Set and visualize deadlines with color-coded indicators
+  - **Green**: Tasks due in more than 2 days
+  - **Orange**: Tasks due within the next 2 days
+  - **Red**: Overdue tasks (past due date)
 - **Task Completion**: Mark tasks and subtasks as complete with visual feedback
 - **Automatic Task Completion**: Tasks are automatically marked as completed when all subtasks are done
 - **Done Column Auto-Complete**: Tasks in the Done column are automatically marked as completed

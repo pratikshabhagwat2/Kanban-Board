@@ -312,7 +312,7 @@ export default function KanbanBoard() {
         >
           <Toolbar>
             <Typography variant="h5" sx={{ flexGrow: 1, fontWeight: 700 }}>
-              Kanban Board
+              My Personal Kanban Board
             </Typography>
             <Box display="flex" alignItems="center" gap={1}>
               <Box display="flex" mr={1}>
