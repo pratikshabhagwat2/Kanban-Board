@@ -46,7 +46,7 @@ A modern, minimalist Kanban board application built with React, TypeScript, and 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/minimalist-kanban.git
+git clone https://github.com/pratikshabhagwat2/Kanban-Board.git
 cd minimalist-kanban
 ```
 
@@ -103,37 +103,3 @@ You can customize the Kanban board columns by editing the initial data in `src/c
    - All subtasks are completed
    - A task is moved to the "Done" column
    - A new task is created directly in the "Done" column
-   
-## GitHub Repository Instructions
-
-### Setting up a Private Repository
-
-1. Go to GitHub and create a new private repository
-2. Initialize the repository with the existing code:
-
-```bash
-# Navigate to your project directory
-cd /Users/pratiksb/Kanban-Board
-
-# Initialize git if not already done
-git init
-
-# Add all files to git
-git add .
-
-# Make the initial commit
-git commit -m "Initial commit: Minimalist Kanban Board implementation"
-
-# Add the remote repository (replace with your GitHub URL)
-git remote add origin https://github.com/yourusername/minimalist-kanban.git
-
-# Push to GitHub
-git push -u origin main
-```
-
-3. Give access to `@okarin1511` from the GitHub repository settings
-4. In the repository settings:
-   - Go to "Manage access"
-   - Click "Invite a collaborator"
-   - Search for `okarin1511`
-   - Add as collaborator
